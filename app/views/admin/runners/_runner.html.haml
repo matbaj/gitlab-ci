@@ -17,6 +17,7 @@
     .runner-branches-form.hide
       = form_for [:admin, runner], remote: true, html: { class: 'form-inline' } do |f|
         .form-group
+          = f.hidden_field :description
           = f.text_field :branches, class: 'form-control'
         = f.submit 'Save', class: 'btn'
         %span (#{link_to 'cancel', '#', class: 'cancel'})
@@ -27,6 +28,7 @@
     .runner-description-form.hide
       = form_for [:admin, runner], remote: true, html: { class: 'form-inline' } do |f|
         .form-group
+          = f.hidden_field :branches
           = f.text_field :description, class: 'form-control'
         = f.submit 'Save', class: 'btn'
         %span (#{link_to 'cancel', '#', class: 'cancel'})

@@ -16,6 +16,7 @@ module API
         ActiveRecord::Base.transaction do
           builds = Build.all
           builds = builds.where(project_id: current_runner.projects) unless current_runner.shared?
+          builds = builds.where(ref: current_runner.branches.split(",")) unless current_runner.defined_branches?
           build =  builds.first_pending
 
           not_found! and return unless build

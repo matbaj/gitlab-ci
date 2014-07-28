@@ -16,7 +16,7 @@ class Runner < ActiveRecord::Base
 
   has_one :last_build, ->() { order('id DESC') }, class_name: 'Build'
 
-  attr_accessible :token, :description
+  attr_accessible :token, :description, :branches
 
   before_validation :set_default_values
 
@@ -32,6 +32,10 @@ class Runner < ActiveRecord::Base
     return token unless !description.blank?
 
     description
+  end
+
+  def defined_branches?
+    branches.blank?
   end
 
   def shared?

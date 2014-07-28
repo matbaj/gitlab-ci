@@ -14,7 +14,7 @@ class Admin::RunnersController < Admin::ApplicationController
   end
 
   def update
-    @runner.update_attributes(description: params[:runner][:description])
+    @runner.update_attributes(description: params[:runner][:description],branches: params[:runner][:branches])
 
     respond_to do |format|
       format.js

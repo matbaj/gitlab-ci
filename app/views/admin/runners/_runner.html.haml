@@ -11,6 +11,16 @@
     = link_to admin_runner_path(runner) do
       = runner.token
   %td
+    .runner-branches
+      = runner.branches
+      %span (#{link_to 'edit', '#', class: 'edit-branches-link'})
+    .runner-branches-form.hide
+      = form_for [:admin, runner], remote: true, html: { class: 'form-inline' } do |f|
+        .form-group
+          = f.text_field :branches, class: 'form-control'
+        = f.submit 'Save', class: 'btn'
+        %span (#{link_to 'cancel', '#', class: 'cancel'})
+  %td
     .runner-description
       = runner.description
       %span (#{link_to 'edit', '#', class: 'edit-runner-link'})
